@@ -77,7 +77,7 @@ code.place(x=30, y=150)
 code.insert(0,'Password')
 code.bind('<FocusIn>', on_enter_pass)
 code.bind('<FocusOut>', on_leave_pass)
-
+ 
 Frame(frame,width=295, height=2, bg='black').place(x=25, y=177)
 
 
