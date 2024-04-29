@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox
 from Store_admin import *
+from Store_user import *
 from PIL import Image,ImageTk
 
 
@@ -23,14 +24,10 @@ def signin():
         root.destroy()
         page_admin.mainloop()
     elif username!= 'admin' or password != '1234':
-        page_user=Toplevel(root)
-        page_user.title("USER")
-        page_user.geometry('925x500+300+200')
-        page_user.config(bg="white")
-
-        Label(page_user, text='Userr', bg='#fff', font=('Times New Roman', 50, 'bold')).pack(expand=True)
-        
-        page_user.mainloop()
+        page_admin = Tk()
+        obj = user_store(page_admin)
+        root.destroy()
+        page_admin.mainloop()
 
     
 

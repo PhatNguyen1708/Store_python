@@ -1,15 +1,15 @@
 import json
 
 class Product:
-    def __init__(self, Name, Price, Quantity,ID,Infromation):
+    def __init__(self,ID,Name,Price,Quantity,Information):
         self.ID = ID
         self.Name = Name
         self.Price = Price
         self.Quantity = Quantity
-        self.Infromation = Infromation
+        self.Information = Information
 
     def display(self):
-        print(f"ID: {self.ID} Product: {self.Name}, Price: ${self.Price}, Quantity: {self.Quantity}, Infromation: {self.Infromation}")
+        print(f"ID: {self.ID} Product: {self.Name}, Price: ${self.Price}, Quantity: {self.Quantity}, Information: {self.Information}")
 
 
 class ProductManager:
@@ -72,10 +72,11 @@ class ProductManager:
 if __name__ == "__main__":
     manager = ProductManager()
 
-    # Displaying products
+    them = Product("#004","banh",200,20,"hong ro")
+
     manager.display_products()
 
-    manager.remove_product("Product 2")
+    manager.add_product(them)
 
     manager.display_products()
 

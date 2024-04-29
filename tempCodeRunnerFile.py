@@ -42,7 +42,7 @@ class admin_store:
             data = product_manager.search_product(search_data)
             tree.delete(*tree.get_children())
             for item in data:
-                tree.insert('', 'end',values=(item["ID"],item["Name"],item["Price"], item["Quantity"],item["Information"]))
+                tree.insert('', 'end',values=(item["ID"],item["Name"],item["Price"], item["Quantity"],item["Infromation"]))
             self.admin.e_search.delete(0, 'end')
         
     def remove(self):
@@ -167,7 +167,7 @@ class admin_store:
 
         global tree
 
-        listheader = ['ID','Name','Price', 'Quantity','Information']
+        listheader = ['ID','Name','Price', 'Quantity','Infromation']
 
         product_manager = Products()
 
