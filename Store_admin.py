@@ -18,17 +18,20 @@ class admin_store:
         self.admin = admin
         self.contruction()
         self.show()
+        self.help_use = None
 
-    def help_use(self):
-            help_use = Tk()
-            help_use.geometry('550x480')
-            frame_down_help = Frame(help_use, width=500, height=170, bg = co2)
+
+    def help(self): 
+        if not self.help_use or not self.help_use.destroy():
+            self.help_use = Toplevel(admin)
+            self.help_use.resizable(width=FALSE, height=FALSE)
+            self.help_use.geometry('550x480')
+            frame_down_help = Frame(self.help_use, width=500, height=170, bg = co2)
             frame_down_help.grid(row= 0, column=0, padx=0, pady=0)
             help_text = "-sadghwqehwerhwerhw"
             l_help = Label(frame_down_help,text=help_text,width=20, height=1, font=('Ivy 10'), bg=co0)
             l_help.place(x=50, y=50)
-            help_use.mainloop()
-    
+
     def clean(self):
         self.admin.e_Name.delete(0, 'end')
         self.admin.e_Price.delete(0, 'end')
@@ -218,7 +221,7 @@ class admin_store:
 
         app_name = Label(self.admin.frame_up, text="Store", height=1, font=('Verdana 17 bold'), bg=co4 ,fg=co1)
         app_name.place(x=5, y=5)
-        self.admin.help_use = Button(self.admin.frame_up, text="help", width=10, height=1, bg=co4, font=('Ivy 8 bold'),command=self.help_use)
+        self.admin.help_use = Button(self.admin.frame_up, text="help", width=10, height=1, bg=co4, font=('Ivy 8 bold'),command=self.help)
         self.admin.help_use.place(x=450, y=10)
 
         self.admin.l_Id =Label(self.admin.frame_down, text="ID *", width=20, height=1, font=('Ivy 10'), bg=co0, anchor=NW)

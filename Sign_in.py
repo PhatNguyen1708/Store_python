@@ -24,10 +24,10 @@ def signin():
         root.destroy()
         page_admin.mainloop()
     elif username!= 'admin' or password != '1234':
-        page_admin = Tk()
-        obj = user_store(page_admin)
+        page_user = Tk()
+        obj = user_store(page_user)
         root.destroy()
-        page_admin.mainloop()
+        page_user.mainloop()
 
     
 

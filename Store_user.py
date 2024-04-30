@@ -17,17 +17,75 @@ class user_store:
     def __init__(self,admin):
         self.admin = admin
         self.contruction()
+        self.carts = []
         self.show()
+        self.help_use = None
+        self.shopping_cart = None
 
-    def help_use(self):
-            help_use = Tk()
-            help_use.geometry('590x480')
-            frame_down_help = Frame(help_use, width=500, height=170, bg = co2)
+    def show_shopping_cart(self):
+        if not self.shopping_cart or not self.shopping_cart.winfo_exists():
+            self.shopping_cart = Toplevel(admin)
+            self.shopping_cart.geometry('590x480')
+            self.shopping_cart.resizable(width=FALSE, height=FALSE)
+            self.frame_down_shopping_cart = Frame(self.shopping_cart, width=500, height=170, bg = co2)
+            self.frame_down_shopping_cart.grid(row= 0, column=0, padx=0, pady=0)
+
+        def show_cart():
+
+            listheader = ['ID','Name','Price', 'Quantity','Information']
+
+            list_item = ttk.Treeview(self.frame_down_shopping_cart,height=20, selectmode="extended", columns=listheader, show="headings")
+            list_vsb = ttk.Scrollbar(self.frame_down_shopping_cart, orient="vertical", command=tree.yview)
+            list_hsb = ttk.Scrollbar(self.frame_down_shopping_cart, orient="horizontal", command=tree.xview)
+
+            tree.configure(yscrollcommand=list_vsb.set, xscrollcommand=list_hsb.set)
+
+            list_item.grid(column=0, row=0, sticky='nsew')
+            list_vsb.grid(column=1, row=0, sticky='ns')
+            list_hsb.grid(column=0, row=1, sticky='ew')
+
+            list_item.heading(0, text='ID', anchor=NW)
+            list_item.heading(1, text='Name', anchor=NW)
+            list_item.heading(2, text='Price', anchor=NW)
+            list_item.heading(3, text='Quantity', anchor=NW)
+            list_item.heading(4, text='Information', anchor=NW)
+                
+            list_item.column(0, width=50,anchor='nw')
+            list_item.column(1, width=120, anchor='nw')
+            list_item.column(2, width=100, anchor='nw')
+            list_item.column(3, width=100, anchor='nw')
+            list_item.column(4, width=180, anchor='nw')
+
+            for cart in self.carts:
+                list_item.insert('', 'end',values=(cart["ID"],cart["Name"],cart["Price"], cart["Quantity"],cart["Information"]))
+        show_cart()
+
+    def add_cart(self):
+        self.admin.e_Id.configure(state="normal")
+        self.admin.e_Name.configure(state="normal")
+        self.admin.e_Price.configure(state="normal")
+        self.admin.e_Infromation.configure(state="normal")
+        id=self.admin.e_Id.get("1.0",'end-1c')
+        name = self.admin.e_Name.get("1.0",'end-1c')
+        price =self.admin.e_Price.get("1.0",'end-1c')
+        quantity=self.admin.e_Quantity.get("1.0",'end-1c')
+        information=self.admin.e_Infromation.get("1.0",'end-1c')
+        self.admin.e_Id.configure(state="disabled")
+        self.admin.e_Name.configure(state="disabled")
+        self.admin.e_Price.configure(state="disabled")
+        self.admin.e_Infromation.configure(state="disabled")
+        add = Product(id,name,price,quantity,information)
+        self.carts.append(vars(add))
+    def help(self): 
+        if not self.help_use or not self.help_use.winfo_exists():
+            self.help_use = Toplevel(admin)
+            self.help_use.resizable(width=FALSE, height=FALSE)
+            self.help_use.geometry('550x480')
+            frame_down_help = Frame(self.help_use, width=500, height=170, bg = co2)
             frame_down_help.grid(row= 0, column=0, padx=0, pady=0)
             help_text = "-sadghwqehwerhwerhw"
             l_help = Label(frame_down_help,text=help_text,width=20, height=1, font=('Ivy 10'), bg=co0)
             l_help.place(x=50, y=50)
-            help_use.mainloop()
 
     def search(self):
             product_manager = Products()
@@ -132,7 +190,7 @@ class user_store:
         self.admin.frame_product = Frame(self.admin, width=300, height=287, bg = co0,highlightbackground=co1, highlightthickness=2)
         self.admin.frame_product.place(x=590, y=220)
 
-        self.admin.frame_table = Frame(self.admin, width=570, height=500, bg = co2,highlightbackground=co1, highlightthickness=2, relief="flat")
+        self.admin.frame_table = Frame(self.admin, width=570, height=500, bg = co5,highlightbackground=co1, highlightthickness=2, relief="flat")
         self.admin.frame_table.place(x=10, y=60)
 
         app_name = Label(self.admin.frame_up, text="Store", height=1, font=('Verdana 17 bold'), bg=co4 ,fg=co1)
@@ -167,7 +225,7 @@ class user_store:
         self.admin.e_Infromation.place(x=80, y=150)
         self.admin.e_Infromation.configure(state="disabled")
 
-        self.admin.help_use = Button(self.admin.frame_up, text="help", width=10, height=1, bg=co4, font=('Ivy 8 bold'),command=self.help_use)
+        self.admin.help_use = Button(self.admin.frame_up, text="help", width=10, height=1, bg=co4, font=('Ivy 8 bold'),command=self.help)
         self.admin.help_use.place(x=800, y=10)
 
         self.admin.b_search = Button(self.admin.frame_function, text="Search",width=5, height=1, bg=co4, font=('Ivy 8 bold'),command=self.search)
@@ -180,6 +238,12 @@ class user_store:
 
         self.admin.b_clean = Button(self.admin.frame_product, text="Clean all",width=8, height=1, bg=co4, font=('Ivy 8 bold'),command=self.clean)
         self.admin.b_clean.place(x=10, y=210)
+
+        self.admin.b_add= Button(self.admin.frame_product, text="Add to cart",width=8, height=1, bg=co4, font=('Ivy 8 bold'),command=self.add_cart)
+        self.admin.b_add.place(x=80, y=210)
+
+        self.admin.b_cart = Button(self.admin.frame_product, text="Cart",width=8, height=1, bg=co4, font=('Ivy 8 bold'),command=self.show_shopping_cart)
+        self.admin.b_cart.place(x=210, y=250)
 
 if __name__ == "__main__":
     admin = Tk()

@@ -1,15 +1,21 @@
 import tkinter as tk
 
-def clear_text():
-    text_widget.delete('1.0', tk.END)
+def open_new_window():
+    global new_window
+    if not new_window or not new_window.winfo_exists():
+        new_window = tk.Toplevel(root)
+        new_window.title("Cửa sổ mới")
+        new_window.geometry("200x100")
+        tk.Label(new_window, text="Đây là cửa sổ mới").pack()
+    else:
+        new_window.lift()  # Nếu đã mở, nâng cấp cửa sổ lên trên cùng
 
 root = tk.Tk()
-root.title("Xóa dữ liệu trong Text Widget")
+root.title("Giao diện đồ họa")
 
-text_widget = tk.Text(root)
-text_widget.pack()
+new_window = None
 
-clear_button = tk.Button(root, text="Xóa", command=clear_text)
-clear_button.pack()
+button = tk.Button(root, text="Mở cửa sổ mới", command=open_new_window)
+button.pack()
 
 root.mainloop()
