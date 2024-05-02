@@ -18,13 +18,23 @@ class user_store:
         self.admin = admin
         self.contruction()
         self.carts = []
+        self.API()
         self.show()
         self.help_use = None
         self.shopping_cart = None
 
+    def API(self):
+        response = requests.get('https://v1.slashapi.com/hehehehe/mysql/njU5fzbTtN/store')
+        if response.status_code == 200:
+             data =response.json()['data']
+             with open('store_data.json','w',encoding='utf-8') as file:
+                json.dump(data,file, ensure_ascii=False, indent=4)
+        else:
+            messagebox.showinfo("Fail","Can't get data from API, use last data")
+
     def show_shopping_cart(self):
         if not self.shopping_cart or not self.shopping_cart.winfo_exists():
-            self.shopping_cart = Toplevel(admin)
+            self.shopping_cart = Toplevel(self.admin)
             self.shopping_cart.geometry('590x480')
             self.shopping_cart.resizable(width=FALSE, height=FALSE)
             self.frame_down_shopping_cart = Frame(self.shopping_cart, width=500, height=170, bg = co2)

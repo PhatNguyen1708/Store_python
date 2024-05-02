@@ -4,6 +4,7 @@ from tkinter import messagebox
 from PIL import Image,ImageTk
 from Function import *
 import re
+import requests
 #colors
 co0 = "#ffffff" #trang
 co1 = "#000000"  #den
@@ -16,9 +17,19 @@ co5 = "#dda0dd"
 class admin_store:
     def __init__(self,admin):
         self.admin = admin
+        self.API()
         self.contruction()
         self.show()
         self.help_use = None
+
+    def API(self):
+        response = requests.get('https://v1.slashapi.com/hehehehe/mysql/njU5fzbTtN/store')
+        if response.status_code == 200:
+             data =response.json()['data']
+             with open('store_data.json','w',encoding='utf-8') as file:
+                json.dump(data,file, ensure_ascii=False, indent=4)
+        else:
+            messagebox.showinfo("Fail","Can't get data from API, use last data")
 
 
     def help(self): 
@@ -216,7 +227,7 @@ class admin_store:
         self.admin.frame_down = Frame(self.admin, width=500, height=170, bg = co0)
         self.admin.frame_down.grid(row= 1, column=0, padx=0, pady=0)
 
-        self.admin.frame_table = Frame(self.admin, width=550, height=100, bg = co5, relief="flat")
+        self.admin.frame_table = Frame(self.admin, width=550, height=100, bg = co0, relief="flat")
         self.admin.frame_table.grid(row= 2, column=0, columnspan=2, padx=10, pady=1, sticky=NW)
 
         app_name = Label(self.admin.frame_up, text="Store", height=1, font=('Verdana 17 bold'), bg=co4 ,fg=co1)

@@ -1,21 +1,27 @@
 import tkinter as tk
 
-def open_new_window():
-    global new_window
-    if not new_window or not new_window.winfo_exists():
-        new_window = tk.Toplevel(root)
-        new_window.title("Cửa sổ mới")
-        new_window.geometry("200x100")
-        tk.Label(new_window, text="Đây là cửa sổ mới").pack()
+def chose(x):
+    if x == 1:
+        result_label.config(text="1")
     else:
-        new_window.lift()  # Nếu đã mở, nâng cấp cửa sổ lên trên cùng
+        result_label.config(text="2")
 
+# Tạo cửa sổ giao diện
 root = tk.Tk()
-root.title("Giao diện đồ họa")
+root.title("Simple Graphic Library")
 
-new_window = None
+# Tạo các thành phần trong cửa sổ
+label = tk.Label(root, text="Choose a number:")
+label.pack()
 
-button = tk.Button(root, text="Mở cửa sổ mới", command=open_new_window)
-button.pack()
+button_1 = tk.Button(root, text="1", command=lambda: chose(1))
+button_1.pack()
 
+button_2 = tk.Button(root, text="2", command=lambda: chose(2))
+button_2.pack()
+
+result_label = tk.Label(root, text="")
+result_label.pack()
+
+# Hiển thị cửa sổ
 root.mainloop()

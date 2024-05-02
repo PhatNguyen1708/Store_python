@@ -1,4 +1,5 @@
 import json
+import requests
 
 class Product:
     def __init__(self,ID,Name,Price,Quantity,Information):
@@ -12,6 +13,7 @@ class Products:
     def __init__(self):
         self.products = []
         self.loadfile()
+
     def loadfile(self):
         try:
             with open('store_data.json','r',encoding='utf-8') as file:
@@ -22,7 +24,7 @@ class Products:
 
     def savefile(self):
         with open('store_data.json','w',encoding='utf-8') as file:
-            json.dump(self.products, file, indent=4)
+            json.dump(self.products, file, indent=4,ensure_ascii=False)
     
     def search_product(self, name):
         data = []
