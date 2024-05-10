@@ -2,12 +2,13 @@ import json
 import requests
 
 class Product:
-    def __init__(self,ID,Name,Price,Quantity,Information):
+    def __init__(self,ID,Name,Price,Quantity,Information,Fluctuations):
         self.ID = ID
         self.Name = Name
         self.Price = Price
         self.Quantity = Quantity
         self.Information = Information
+        self.Fluctuations = Fluctuations
 
 class Products:
     def __init__(self):
@@ -50,16 +51,20 @@ class Products:
     def update_product(self,new_product):
         for product in self.products:
             if product['ID'].lower() == new_product.ID.lower():
-                product['Name'] = new_product.Name
+                fluctuations = ((float(new_product.Price)-float(product['Price']))/float(product['Price']))*100
+                product['Name'] = new_product.Name 
                 product['Price'] = new_product.Price
                 product['Quantity']= new_product.Quantity
                 product['Information']= new_product.Information
+                product['Fluctuations'] = "{:.2f}%".format(fluctuations) 
                 self.savefile()
+    
+    def sell_product(self,product_sell):
+        for product in self.products:
+            if product['ID'].lower() == product_sell.ID.lower():
+                product['Quantity'] = int(product['Quantity']) - int(product_sell.Quantity)
+        self.savefile()
 
-manager = Products()
-them = Product('#004','da',200,20,'hong ro')
-manager.update_product(them)
-        
     
 
     

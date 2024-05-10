@@ -2,15 +2,25 @@
     {
         "ID": "#001",
         "Name": "Bún Bò",
-        "Price": 200000,
-        "Quantity": 100,
-        "Information": "Bún, thịt bò, nước lèo"
+        "Price": "260000",
+        "Quantity": 103,
+        "Information": "Bún, thịt bò, nước lèo",
+        "Fluctuations": "0.00%"
     },
     {
         "ID": "#002",
         "Name": "Hu Tieu",
-        "Price": 20000,
-        "Quantity": 50,
-        "Information": "hủ tiếu, thịt, rau, nước lèo"
+        "Price": "20000",
+        "Quantity": 47,
+        "Information": "hủ tiếu, thịt, rau, nước lèo, tuong, ot, chanh ",
+        "Fluctuations": "0%"
+    },
+    {
+        "ID": "#004",
+        "Name": "Bún Bò asdfg",
+        "Price": "260000",
+        "Quantity": 95,
+        "Information": "Bún, thịt bò, nước lèo",
+        "Fluctuations": 0
     }
 ]
