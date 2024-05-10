@@ -86,6 +86,7 @@ class user_store:
         self.admin.e_Infromation.configure(state="disabled")
         add = Product(id,name,price,quantity,information)
         self.carts.append(vars(add))
+
     def help(self): 
         if not self.help_use or not self.help_use.winfo_exists():
             self.help_use = Toplevel(admin)
