@@ -35,7 +35,7 @@ class user_store:
             self.shopping_cart.geometry('590x480')
             self.shopping_cart.resizable(width=tk.FALSE, height=tk.FALSE)
             self.frame_table_shopping_cart = tk.Frame(self.shopping_cart, width=500, height=170, bg = co2)
-            self.frame_table_shopping_cart.grid(row= 0, column=0, padx=0, pady=0)
+            self.frame_table_shopping_cart.grid(row= 0, column=0, padx=10, pady=20)
             self.frame_funtion = tk.Frame(self.shopping_cart, width=590, height=120, bg = co0)
             self.frame_funtion.place(x=0,y=350)
             

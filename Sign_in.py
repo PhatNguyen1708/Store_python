@@ -19,7 +19,7 @@ def Signin():
     password = code.get()
 
     try:
-        with open ('user_data.json', 'r') as file:
+        with open ('data/user_data.json', 'r') as file:
             data = json.load(file)
 
         accountF = False
@@ -30,13 +30,14 @@ def Signin():
                 obj = admin_store(page_admin)
                 root.destroy()
                 page_admin.mainloop()
+                return
             elif username == account["username"] and password == account["password"]:
                 messagebox.showinfo('Sign in', 'Sucessfully sign in')
                 page_user = Tk()
                 obj = user_store(page_user)
                 root.destroy()
                 page_user.mainloop()
-                break
+                return
         
         if not accountF:
             for account in data:
@@ -63,19 +64,19 @@ def signup_command():
         password = code.get()
         comfirm_password = comfirm_code.get()
 
-        if password == comfirm_password:
+        if password == comfirm_password and re.fullmatch(r'[A-Za-z0-9_@$%&*^+=]{8,}',password):
             new_acc = {
                 "username":username,
                 "password":password
             }
-            if os.path.exists(r'user_data.json'):
-                with open ("user_data.json", "r", encoding='utf-8') as file:
+            if os.path.exists(r'data/user_data.json'):
+                with open ("data/user_data.json", "r", encoding='utf-8') as file:
                     accounts = json.load(file)
             else:
                 accounts = []
             accounts.append(new_acc)
 
-            with open ("user_data.json", "w", encoding='utf-8') as file:
+            with open ("data/user_data.json", "w", encoding='utf-8') as file:
                 json.dump(accounts, file)
 
             messagebox.showinfo('Sign up', 'Sucessfully sign up')
@@ -85,7 +86,7 @@ def signup_command():
     def sign():
         win.destroy()
 
-    img = PhotoImage(file='sign_up.png')
+    img = PhotoImage(file='picture/sign_up.png')
     Label(win, image=img, border=0, bg='white').place(x=50, y=90)
 
     frame=Frame(win, width=350, height=390, bg='#fff')
@@ -157,7 +158,7 @@ def signup_command():
 
 
 
-img=PhotoImage(file='login.png')
+img=PhotoImage(file='picture/login.png')
 Label(root, image=img, bg='white').place(x=50, y=50)
 
 frame = Frame(root, width=350, height=350, bg="white")

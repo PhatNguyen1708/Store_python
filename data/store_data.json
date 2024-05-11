@@ -1,0 +1,18 @@
+[
+    {
+        "ID": "#001",
+        "Name": "Bún Bò",
+        "Price": 200000,
+        "Quantity": 100,
+        "Information": "Bún, thịt bò, nước lèo",
+        "Fluctuations": "0%"
+    },
+    {
+        "ID": "#002",
+        "Name": "Hu Tieu",
+        "Price": 20000,
+        "Quantity": 50,
+        "Information": "hủ tiếu, thịt, rau, nước lèo",
+        "Fluctuations": "0%"
+    }
+]

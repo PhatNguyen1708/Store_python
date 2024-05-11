@@ -1,1 +1,1 @@
-pyinstaller --onefile --clean -w  Sign_in.py
+pyinstaller --onefile --clean -w  Sign_in.py -n Store

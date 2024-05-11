@@ -36,8 +36,14 @@ class admin_store:
                     response = requests.get(link)
                     if response.status_code == 200:
                         data =response.json()['data']
-                        with open('store_data.json','w',encoding='utf-8') as file:
+                        with open('data/store_data.json','w',encoding='utf-8') as file:
                             json.dump(data,file, ensure_ascii=False, indent=4)
+                        with open('data/store_data.json', 'r',encoding='utf-8') as file:
+                                data = json.load(file)
+                        for item in data:
+                            item["Fluctuations"] = "0%"
+                        with open('data/store_data.json', 'w',encoding='utf-8') as file:
+                            json.dump(data, file, ensure_ascii=False, indent=4)
                         self.show()
                         self.get_api.destroy()
                     else:

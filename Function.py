@@ -17,19 +17,19 @@ class Products:
 
     def loadfile(self):
         try:
-            with open('store_data.json','r',encoding='utf-8') as file:
+            with open('data/store_data.json','r',encoding='utf-8') as file:
                 self.products = json.load(file)
         except FileNotFoundError:
             self.products =[]
         return self.products
 
     def savefile(self):
-        with open('store_data.json','w',encoding='utf-8') as file:
+        with open('data/store_data.json','w',encoding='utf-8') as file:
             json.dump(self.products, file, indent=4,ensure_ascii=False)
     
     def search_product(self, name):
         data = []
-        with open('store_data.json','r',encoding='utf-8') as file:
+        with open('data/store_data.json','r',encoding='utf-8') as file:
                 self.products = json.load(file)
         for product in self.products:
             if product['Name'].lower() == name.lower() or product['ID'].lower() == name.lower():
