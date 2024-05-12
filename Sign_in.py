@@ -32,10 +32,10 @@ def Signin():
                     root.destroy()
                     page_admin.mainloop()
                     return
-                elif username == account["username"] and password == account["password"]:
+                elif username.lower() == account["username"].lower() and password == account["password"]:
                     messagebox.showinfo('Sign in', 'Sucessfully sign in')
                     page_user = Tk()
-                    obj = user_store(page_user)
+                    obj = user_store(page_user,username)
                     root.destroy()
                     page_user.mainloop()
                     return
@@ -72,8 +72,8 @@ def Signin():
             with open ('data/user_data.json', 'r') as file:
                 data = json.load(file)
             for account in data:
-                if username == account["username"]:
-                    messagebox.showinfo('Failed', 'Invalid email address or an account already exists.')
+                if username.lower() == account["username"].lower():
+                    messagebox.showinfo('Failed', 'an account already exists.')
                     return
             if password == comfirm_password and re.fullmatch(r'[A-Za-z0-9_#@$%&*^+=]{8,}',password):
                 new_acc = {
