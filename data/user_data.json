@@ -1,1 +1,26 @@
-[{"username": "sara", "password": "0708"}, {"username": "truc", "password": "2003"}, {"username": "Phat", "password": "123445"}]
+[
+    {
+        "username": "sara",
+        "password": "0708"
+    },
+    {
+        "username": "truc",
+        "password": "2003"
+    },
+    {
+        "username": "Phat",
+        "password": "123445"
+    },
+    {
+        "username": "phat",
+        "password": "Phat170824@"
+    },
+    {
+        "username": "hehe",
+        "password": "Phat123_"
+    },
+    {
+        "username": "halogira",
+        "password": "Phat170824@#"
+    }
+]

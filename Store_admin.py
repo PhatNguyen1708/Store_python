@@ -28,6 +28,13 @@ class admin_store:
             self.get_api.resizable(width=FALSE, height=FALSE)
             self.get_api.geometry('550x100')
 
+            def check_fluctuations(json_file_path):
+                    with open(json_file_path, 'r') as file:
+                        data = json.load(file)
+                    if "Fluctuations" in data:
+                        return True
+                    else:
+                        return False
             def Get():
                 link = e_api.get()
                 if link=='':
@@ -40,10 +47,12 @@ class admin_store:
                             json.dump(data,file, ensure_ascii=False, indent=4)
                         with open('data/store_data.json', 'r',encoding='utf-8') as file:
                                 data = json.load(file)
-                        for item in data:
-                            item["Fluctuations"] = "0%"
-                        with open('data/store_data.json', 'w',encoding='utf-8') as file:
-                            json.dump(data, file, ensure_ascii=False, indent=4)
+                        if not check_fluctuations("data/store_data.json"):
+                            for item in data:
+                                item["Fluctuations"] = "0%"
+                            with open('data/store_data.json', 'w',encoding='utf-8') as file:
+                                json.dump(data, file, ensure_ascii=False, indent=4)
+                        messagebox.showinfo("Successful","Data retrieved from API.")
                         self.show()
                         self.get_api.destroy()
                     else:
@@ -280,7 +289,7 @@ class admin_store:
         self.admin.frame_table = Frame(self.admin, width=650, height=100, bg = co0, relief="flat")
         self.admin.frame_table.grid(row= 2, column=0, columnspan=2, padx=10, pady=1, sticky=NW)
 
-        app_name = Label(self.admin.frame_up, text="Store", height=1, font=('Verdana 17 bold'), bg=co4 ,fg=co1)
+        app_name = Label(self.admin.frame_up, text="Store Manager", height=1, font=('Verdana 17 bold'), bg=co4 ,fg=co1)
         app_name.place(x=5, y=5)
         
         self.admin.help_use = Button(self.admin.frame_up, text="help", width=10, height=1, bg=co4, font=('Ivy 8 bold'),command=self.help)

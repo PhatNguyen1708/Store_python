@@ -33,8 +33,9 @@ def Signin():
                 return
             elif username == account["username"] and password == account["password"]:
                 messagebox.showinfo('Sign in', 'Sucessfully sign in')
+                name_user = user.get()
                 page_user = Tk()
-                obj = user_store(page_user)
+                obj = user_store(page_user,name_user)
                 root.destroy()
                 page_user.mainloop()
                 return
@@ -46,7 +47,6 @@ def Signin():
                 elif username != account["username"]:
                     messagebox.showerror("Failed", "User doesn't exist!")
                     break
-
     except FileNotFoundError:
         messagebox.showerror("Failed", "Don't have any account!")
 
@@ -64,7 +64,7 @@ def signup_command():
         password = code.get()
         comfirm_password = comfirm_code.get()
 
-        if password == comfirm_password and re.fullmatch(r'[A-Za-z0-9_@$%&*^+=]{8,}',password):
+        if password == comfirm_password and re.fullmatch(r'[A-Za-z0-9_#@$%&*^+=]{8,}',password):
             new_acc = {
                 "username":username,
                 "password":password
@@ -77,11 +77,12 @@ def signup_command():
             accounts.append(new_acc)
 
             with open ("data/user_data.json", "w", encoding='utf-8') as file:
-                json.dump(accounts, file)
-
+                json.dump(accounts, file, indent=4,ensure_ascii=False)
             messagebox.showinfo('Sign up', 'Sucessfully sign up')
+        elif password  != comfirm_password:
+            messagebox.showerror('Wrong password', "Both Passwword should match")          
         else:
-            messagebox.showerror('Invalid', "Both Passwword should match")
+            messagebox.showerror('Weak password', "Password must be at lest 8 characters and contain one upper case letter, one lower case letter and one numberic character")
 
     def sign():
         win.destroy()
