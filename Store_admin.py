@@ -98,7 +98,7 @@ class admin_store:
             self.search_data = self.admin.e_search.get()
             check = product_manager.remove_product(item)
             if check == 0:
-                messagebox.showinfo('Success', 'Data has been deleted successfully !')
+                messagebox.showinfo('Successful', 'Data has been deleted successfully !')
             else:
                 messagebox.showinfo('Fail',"Not Found!")
             self.show()
@@ -166,7 +166,7 @@ class admin_store:
             add = Product(id,name,price,quantity,information,fluctuations)
             product_manager.add_product(add)
             self.show()
-            messagebox.showinfo("Success","Data add successfully !")
+            messagebox.showinfo("Successful","Data add successfully !")
             self.admin.e_Name.delete(0, 'end')
             self.admin.e_Price.delete(0, 'end')
             self.admin.e_Id.delete(0, 'end')
@@ -212,7 +212,7 @@ class admin_store:
             add = Product(id,name,price,quantity,information,fluctuations)
             product_manager.update_product(add)
             self.show()
-            messagebox.showinfo("Success","Data update successfully !")
+            messagebox.showinfo("Successful","Data update successfully !")
             self.admin.e_Name.delete(0, 'end')
             self.admin.e_Price.delete(0, 'end')
             self.admin.e_Id.delete(0, 'end')
