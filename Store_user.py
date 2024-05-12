@@ -33,7 +33,7 @@ class user_store:
     def show_shopping_cart(self):
         if not self.shopping_cart or not self.shopping_cart.winfo_exists():
             self.shopping_cart = tk.Toplevel(self.user)
-            self.shopping_cart.geometry('590x480')
+            self.shopping_cart.geometry('590x480+300+150')
             self.shopping_cart.resizable(width=tk.FALSE, height=tk.FALSE)
             self.frame_table_shopping_cart = tk.Frame(self.shopping_cart, width=500, height=170, bg = co2)
             self.frame_table_shopping_cart.grid(row= 0, column=0, padx=10, pady=20)
@@ -161,7 +161,7 @@ class user_store:
         if not self.help_use or not self.help_use.winfo_exists():
             self.help_use = tk.Toplevel(user)
             self.help_use.resizable(width=tk.FALSE, height=tk.FALSE)
-            self.help_use.geometry('550x480')
+            self.help_use.geometry('550x480+300+150')
             frame_down_help = tk.Frame(self.help_use, width=500, height=170, bg = co2)
             frame_down_help.grid(row= 0, column=0, padx=0, pady=0)
             help_text = "-sadghwqehwerhwerhw"
@@ -243,7 +243,7 @@ class user_store:
     
     def contruction(self):
         self.user.title ("Store")
-        self.user.geometry('960x520')
+        self.user.geometry('960x520+300+150')
         self.user.configure(background=co0)
         self.user.resizable(width=tk.FALSE, height=tk.FALSE)
 

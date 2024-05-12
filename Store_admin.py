@@ -24,9 +24,9 @@ class admin_store:
 
     def API(self):
         if not self.get_api or not self.get_api.destroy():
-            self.get_api = Toplevel(admin)
+            self.get_api = Toplevel(self.admin)
             self.get_api.resizable(width=FALSE, height=FALSE)
-            self.get_api.geometry('550x100')
+            self.get_api.geometry('550x100+400+300')
 
             def check_fluctuations(json_file_path):
                     with open(json_file_path, 'r') as file:
@@ -69,7 +69,7 @@ class admin_store:
         if not self.help_use or not self.help_use.destroy():
             self.help_use = Toplevel(admin)
             self.help_use.resizable(width=FALSE, height=FALSE)
-            self.help_use.geometry('550x480')
+            self.help_use.geometry('550x480+300+150')
             frame_down_help = Frame(self.help_use, width=500, height=170, bg = co2)
             frame_down_help.grid(row= 0, column=0, padx=0, pady=0)
             help_text = "-sadghwqehwerhwerhw"
@@ -276,7 +276,7 @@ class admin_store:
     
     def contruction(self):
         self.admin.title ("Store")
-        self.admin.geometry('650x480')
+        self.admin.geometry('650x480+300+150')
         self.admin.configure(background=co0)
         self.admin.resizable(width=FALSE, height=FALSE)
 
