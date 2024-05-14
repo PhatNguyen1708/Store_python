@@ -37,23 +37,32 @@ class user_store:
             self.shopping_cart.resizable(width=tk.FALSE, height=tk.FALSE)
             self.frame_table_shopping_cart = tk.Frame(self.shopping_cart, width=500, height=170, bg = co2)
             self.frame_table_shopping_cart.grid(row= 0, column=0, padx=10, pady=20)
-            self.frame_funtion = tk.Frame(self.shopping_cart, width=590, height=120, bg = co0)
+            self.frame_funtion = tk.Frame(self.shopping_cart, width=590, height=120, bg = co2)
             self.frame_funtion.place(x=0,y=350)
             
         def show_cart():
-            listheader = ['ID','Name','Price', 'Quantity','Information']
-
             global list_item
+            listheader = ['ID','Name','Price', 'Quantity','Information']
 
             list_item = ttk.Treeview(self.frame_table_shopping_cart,height=15, selectmode="extended", columns=listheader, show="headings")
             list_vsb = ttk.Scrollbar(self.frame_table_shopping_cart, orient="vertical", command=list_item.yview)
             list_hsb = ttk.Scrollbar(self.frame_table_shopping_cart, orient="horizontal", command=list_item.xview)
+
+            def get_ID(event):
+                item_cart = list_item.focus()
+                item_text = list_item.item(item_cart)['values']
+                self.shopping_cart.e_remove.delete(0,tk.END)
+                self.shopping_cart.e_remove.insert(0,item_text[0])
+                self.shopping_cart.e_update.delete(0,tk.END)
+                self.shopping_cart.e_update.insert(0,item_text[3])
 
             list_item.configure(yscrollcommand=list_vsb.set, xscrollcommand=list_hsb.set)
 
             list_item.grid(column=0, row=0, sticky='nsew')
             list_vsb.grid(column=1, row=0, sticky='ns')
             list_hsb.grid(column=0, row=1, sticky='ew')
+
+            list_item.bind('<Double 1>', get_ID)
 
             list_item.heading(0, text='ID', anchor=tk.NW)
             list_item.heading(1, text='Name', anchor=tk.NW)
@@ -78,17 +87,26 @@ class user_store:
             self.shopping_cart.e_count.delete(0,tk.END)
             self.shopping_cart.e_count.insert(0,Count)
             self.shopping_cart.e_count.configure(state="disabled")
+
         def remove():
-            item = list_item.focus()
-            item_text = tree.item(item)['values']
+            ID_remove = self.shopping_cart.e_remove.get()
             for cart in self.carts:
-                if len(self.carts)==1:
-                    self.carts = []
-                if cart["ID"] == item_text[0]:
+                if cart["ID"] == ID_remove:
                     self.carts.remove(cart)
             show_cart()
             check_price()
         
+        def update_q():
+            ID_update = self.shopping_cart.e_remove.get()
+            Q_update = self.shopping_cart.e_update.get()
+            if ID_update =="":
+                messagebox.showinfo("Fail", "Please Enter ID")
+            for cart in self.carts:
+                if cart["ID"] == ID_update:
+                    cart["Quantity"]=Q_update
+            show_cart()
+            check_price()
+
         def Pay():
             product = Products()
             for cart in self.carts:
@@ -103,11 +121,23 @@ class user_store:
         self.shopping_cart.e_count=tk.Entry(self.frame_funtion,width=20, font=('Ivy 10'), bg=co0)
         self.shopping_cart.e_count.place(x=100,y=80)
         check_price() 
-        self.shopping_cart.e_count.configure(state="disabled")
-        self.remove = tk.Button(self.frame_funtion,text="remove",width=8, height=1, bg=co4, font=('Ivy 8 bold'),command=remove)
-        self.remove.place(x=30,y=50)
-        self.pay = tk.Button(self.frame_funtion,text="Pay",width=8, height=1, bg=co4, font=('Ivy 8 bold'),command=Pay)
-        self.pay.place(x=250,y=80)
+
+        self.shopping_cart.remove = tk.Button(self.frame_funtion,text="Remove",width=8, height=1, bg=co4, font=('Ivy 8 bold'),command=remove)
+        self.shopping_cart.remove.place(x=250,y=10)
+        self.shopping_cart.l_remove =tk.Label(self.frame_funtion, text=f"ID:", height=1, font=('Ivy 10'), bg=co0, anchor=tk.NW)
+        self.shopping_cart.l_remove.place(x=30,y=10)
+        self.shopping_cart.e_remove = tk.Entry(self.frame_funtion, width=20, justify='left', font=('Ivy', 10), highlightthickness=1, relief="solid")
+        self.shopping_cart.e_remove.place(x=100,y=10)
+
+        self.shopping_cart.b_update = tk.Button(self.frame_funtion,text="Update",width=8, height=1, bg=co4, font=('Ivy 8 bold'),command=update_q)
+        self.shopping_cart.b_update.place(x=250,y=40)
+        self.shopping_cart.l_update =tk.Label(self.frame_funtion, text=f"Quantity:", height=1, font=('Ivy 10'), bg=co0, anchor=tk.NW)
+        self.shopping_cart.l_update.place(x=30,y=40)
+        self.shopping_cart.e_update = tk.Entry(self.frame_funtion, width=20, justify='left', font=('Ivy', 10), highlightthickness=1, relief="solid")
+        self.shopping_cart.e_update.place(x=100,y=40)
+
+        self.shopping_cart.pay = tk.Button(self.frame_funtion,text="Pay",width=8, height=1, bg=co4, font=('Ivy 8 bold'),command=Pay)
+        self.shopping_cart.pay.place(x=250,y=80)
 
     def configure_normal(self):
         self.user.e_Id.configure(state="normal")
@@ -131,7 +161,7 @@ class user_store:
         information=self.user.e_Infromation.get("1.0",'end-1c')
         self.configure_disabled()
         if id=="":
-            messagebox.showinfo("Fail", "NULL")
+            messagebox.showinfo("Fail", "Data missing")
             return
         elif quantity == '0' or not self.is_number(quantity):
             messagebox.showinfo("Fail", "Quantity is a number")
@@ -209,7 +239,7 @@ class user_store:
 
         product_manager = Products()
 
-        demo_list = product_manager.loadfile()
+        list_product = product_manager.loadfile()
 
         tree =ttk.Treeview(self.user.frame_table,height=20, selectmode="extended", columns=listheader, show="headings")
 
@@ -238,7 +268,7 @@ class user_store:
         tree.column(4, width=180, anchor='nw')
         tree.column(5,width=100, anchor='nw')
 
-        for item in demo_list:
+        for item in list_product:
             tree.insert('', 'end',values=(item["ID"],item["Name"],item["Price"], item["Quantity"],item["Information"],item["Fluctuations"]))
     
     def contruction(self):

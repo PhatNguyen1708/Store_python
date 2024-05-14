@@ -242,7 +242,7 @@ class admin_store:
 
         product_manager = Products()
 
-        demo_list = product_manager.loadfile()
+        list_product = product_manager.loadfile()
 
         tree =ttk.Treeview(self.admin.frame_table, selectmode="extended", columns=listheader, show="headings")
 
@@ -271,7 +271,7 @@ class admin_store:
         tree.column(4, width=180, anchor='nw')
         tree.column(5,width=100, anchor='nw')
 
-        for item in demo_list:
+        for item in list_product:
             tree.insert('', 'end',values=(item["ID"],item["Name"],item["Price"], item["Quantity"],item["Information"],item["Fluctuations"]))
     
     def contruction(self):

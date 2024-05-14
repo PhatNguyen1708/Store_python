@@ -69,12 +69,13 @@ def Signin():
             password = code.get()
             comfirm_password = comfirm_code.get()
 
-            with open ('data/user_data.json', 'r') as file:
-                data = json.load(file)
-            for account in data:
-                if username.lower() == account["username"].lower():
-                    messagebox.showinfo('Failed', 'an account already exists.')
-                    return
+            if os.path.exists(r'data/user_data.json'):
+                with open ('data/user_data.json', 'r') as file:
+                    data = json.load(file)
+                for account in data:
+                    if username.lower() == account["username"].lower():
+                        messagebox.showinfo('Failed', 'an account already exists.')
+                        return
             if password == comfirm_password and re.fullmatch(r'[A-Za-z0-9_#@$%&*^+=]{8,}',password):
                 new_acc = {
                     "username":username,
