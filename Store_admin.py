@@ -22,19 +22,19 @@ class admin_store:
         self.help_use = None
         self.get_api = None
 
+    def check_fluctuations(self):
+        with open('data/store_data.json', 'r',encoding='utf-8') as file:
+            data = json.load(file)
+        if "Fluctuations" in data:
+            return True
+        else:
+            return False
+
     def API(self):
         if not self.get_api or not self.get_api.destroy():
             self.get_api = Toplevel(self.admin)
             self.get_api.resizable(width=FALSE, height=FALSE)
             self.get_api.geometry('550x100+400+300')
-
-            def check_fluctuations(json_file_path):
-                    with open(json_file_path, 'r') as file:
-                        data = json.load(file)
-                    if "Fluctuations" in data:
-                        return True
-                    else:
-                        return False
             def Get():
                 link = e_api.get()
                 if link=='':
@@ -47,7 +47,7 @@ class admin_store:
                             json.dump(data,file, ensure_ascii=False, indent=4)
                         with open('data/store_data.json', 'r',encoding='utf-8') as file:
                                 data = json.load(file)
-                        if not check_fluctuations("data/store_data.json"):
+                        if not self.check_fluctuations():
                             for item in data:
                                 item["Fluctuations"] = "0%"
                             with open('data/store_data.json', 'w',encoding='utf-8') as file:
@@ -141,14 +141,18 @@ class admin_store:
         check_id = self.check_data(id)
         check_price = self.is_number(price)
         check_quantity = self.is_number(quantity)
+        add = Product(id,name,price,quantity,information,fluctuations)
 
         if id == '' or name == '' or price == '' or quantity == '' or information == '':
             messagebox.showinfo("Fail", "Data missing" )
             return
         elif not re.search(r'^#+[0-9]',id):
             id = "#"+id
-            add = Product(id,name,price,quantity,information)
-            product_manager.add_product(add)
+            if self.check_data(id) == 1:
+                messagebox.showinfo("Fail","Duplicate ID already exists")
+                product_manager.update_product(add)
+            else:
+                product_manager.add_product(add)
             self.show()
             self.admin.e_Name.delete(0, 'end')
             self.admin.e_Price.delete(0, 'end')
@@ -160,10 +164,10 @@ class admin_store:
             messagebox.showinfo("Fail", "Price and Quantity is a number")
             return
         elif check_id == 1:
+            product_manager.update_product(add)           
             messagebox.showinfo("Fail","Duplicate ID already exists")
             return
         else:
-            add = Product(id,name,price,quantity,information,fluctuations)
             product_manager.add_product(add)
             self.show()
             messagebox.showinfo("Successful","Data add successfully !")
@@ -297,27 +301,27 @@ class admin_store:
 
         self.admin.l_Id =Label(self.admin.frame_down, text="ID *", width=20, height=1, font=('Ivy 10'), bg=co0, anchor=NW)
         self.admin.l_Id.place(x=10, y=20)
-        self.admin.e_Id = Entry(self.admin.frame_down, width=30, justify='left', highlightthickness=1, relief="solid")
+        self.admin.e_Id = Entry(self.admin.frame_down, width=35, justify='left', highlightthickness=1, relief="solid")
         self.admin.e_Id.place(x=80, y=20)
 
         self.admin.l_Name = Label(self.admin.frame_down, text="Name *",width=20, height=1, font=('Ivy 10'), bg=co0, anchor=NW)
         self.admin.l_Name.place(x=10, y=50)
-        self.admin.e_Name = Entry(self.admin.frame_down, width=30, justify='left', highlightthickness=1, relief="solid")
+        self.admin.e_Name = Entry(self.admin.frame_down, width=35, justify='left', highlightthickness=1, relief="solid")
         self.admin.e_Name.place(x=80, y=50)
 
         self.admin.l_Price = Label(self.admin.frame_down, text="Price *", height=1, font=('Ivy 10'), bg=co0, anchor=NW)
         self.admin.l_Price.place(x=10, y=80)
-        self.admin.e_Price = Entry(self.admin.frame_down, width=30, justify='left', highlightthickness=1, relief="solid")
+        self.admin.e_Price = Entry(self.admin.frame_down, width=35, justify='left', highlightthickness=1, relief="solid")
         self.admin.e_Price.place(x=80, y=80)
 
         self.admin.l_Quantity = Label(self.admin.frame_down, text="Quantity *", width=20, height=1, font=('Ivy 10'), bg=co0, anchor=NW)
         self.admin.l_Quantity.place(x=10, y=110)
-        self.admin.e_Quantity = Entry(self.admin.frame_down, width=30, justify='left', highlightthickness=1, relief="solid")
+        self.admin.e_Quantity = Entry(self.admin.frame_down, width=35, justify='left', highlightthickness=1, relief="solid")
         self.admin.e_Quantity.place(x=80, y=110)
 
         self.admin.l_Infromation = Label(self.admin.frame_down, text="Infromation *", width=20, height=1, font=('Ivy 10'), bg=co0, anchor=NW)
         self.admin.l_Infromation.place(x=10, y=140)
-        self.admin.e_Infromation = Entry(self.admin.frame_down, width=30, justify='left', highlightthickness=1, relief="solid")
+        self.admin.e_Infromation = Entry(self.admin.frame_down, width=35, justify='left', highlightthickness=1, relief="solid")
         self.admin.e_Infromation.place(x=80, y=140)
 
         self.admin.b_search = Button(self.admin.frame_down, text="Search", height=1, bg=co4, font=('Ivy 8 bold'),command=self.search)

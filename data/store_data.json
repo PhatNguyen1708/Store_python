@@ -1,18 +1,162 @@
 [
     {
         "ID": "#001",
-        "Name": "Bún Bò",
-        "Price": 200000,
-        "Quantity": 100,
-        "Information": "Bún, thịt bò, nước lèo",
+        "Name": "Nước ngọt Pepsi không calo vị chanh 320ml",
+        "Price": "47000",
+        "Quantity": "178",
+        "Information": "Sản phẩm là kết hợp hài hòa của vị chanh thanh mát, giải nhiệt và mang lại cảm giác sảng khoái. Nước ngọt Pepsi không calo vị chanh lon 320ml cực kỳ thích hợp cho những người thích uống nước ngọt nhưn",
         "Fluctuations": "0%"
     },
     {
         "ID": "#002",
-        "Name": "Hu Tieu",
-        "Price": 20000,
+        "Name": "Mì kim chi Ottogi gói 120g",
+        "Price": 10400,
+        "Quantity": 19,
+        "Information": "Ngon mê ly với nước súp mì Ottogi vị kim chi đậm đà, hấp dẫn thấm đều trong từng sợi mì dai vàng cùng hương thơm lừng quyến rũ kích thích khứu giác lẫn vị giác. Mì Ottogi kim chi gói 120g mang đến bữa",
+        "Fluctuations": "0%"
+    },
+    {
+        "ID": "#003",
+        "Name": "Bưởi sấy dẻo Ohla gói 35g",
+        "Price": 8250,
+        "Quantity": 39,
+        "Information": "Bưởi được sấy dẻo ở nhiệt độ cao (50 - 70 độ C) để làm mất đi một phần hơi nước của sản phẩm rồi đem đi làm mát, làm trái cây dẻo, thơm ngon và có chút dai. Bưởi sấy dẻo Ohla gói 35g dùng ăn vặt hoặc ",
+        "Fluctuations": "0%"
+    },
+    {
+        "ID": "#004",
+        "Name": "Kem đặc có đường Lamosa lon 1kg",
+        "Price": 39500,
+        "Quantity": 192,
+        "Information": "Kem đặc có đường Lamosa lon 1kg được sản xuất tại Malaysia và nhập khẩu về Việt Nam. Kem đặc Lamosa được làm từ váng sữa, nên bạn sẽ dễ dàng cảm nhận được độ ngậy, béo trong từng giọt kem đặc. Kem đặc",
+        "Fluctuations": "0%"
+    },
+    {
+        "ID": "#005",
+        "Name": "Khoai tây đông lạnh Trần Gia gói 1kg",
+        "Price": 47000,
+        "Quantity": 45,
+        "Information": "Khoai tây đông lạnh Trần Gia là sản phẩm rau củ đông lạnh khá nổi tiếng, có xuất sứ từ Hà Lan gồm nhiều loại khác nhau. Khoai tây đông lạnh Trần Gia gói 1kg với nguyên liệu tự nhiên cùng dây chuyền sả",
+        "Fluctuations": "0%"
+    },
+    {
+        "ID": "#006",
+        "Name": "Snack khoai tây vị tảo biển Nori Lay's gói 90g",
+        "Price": 22000,
+        "Quantity": 13,
+        "Information": "Snack thơm nức mũi luôn, khoai tây thì mỏng, giòn rụm. Vị khoai tây thật. Snack khoai tây vị tảo biển Nori Lay's gói 90g ăn rất giòn luôn, vị tảo biển Nori khá thơm, đậm đà trên từng miếng khoai tây. ",
+        "Fluctuations": "0%"
+    },
+    {
+        "ID": "#007",
+        "Name": "Snack mực tẩm gia vị cay Bento gói 4g",
+        "Price": 7000,
+        "Quantity": 167,
+        "Information": "Snack mang vị cay the, gia vị hoàn hảo lại còn đậm đà cho từng miếng mực giòn ngon, thơm khó cưỡng. Snack mực tẩm gia vị cay Bento gói 4g nội địa Thái Lan kích thích vị giác vừa ăn vừa xem phim là tuy",
+        "Fluctuations": "0%"
+    },
+    {
+        "ID": "#008",
+        "Name": "Snack que nhân sữa Oishi Akiko gói 140g",
+        "Price": 23000,
+        "Quantity": 45,
+        "Information": "Snack que giòn ngon, thơm thơm vị sữa béo, kích thích vị giác vô cùng. Snack que nhân sữa Oishi Akiko gói 140g hấp dẫn, phù hợp vừa xem phim, vừa nghe nhạc vừa nhâm nhi thưởng thức. Snack Oishi tiện l",
+        "Fluctuations": "0%"
+    },
+    {
+        "ID": "#009",
+        "Name": "Snack phô mai 2 lớp Swing gói 95g",
+        "Price": 22000,
+        "Quantity": 290,
+        "Information": "Snack Swing thơm ngon, giòn rụm với những miếng khoai tây giòn, thơm đầy chất lượng. Snack phô mai 2 lớp Swing gói 95g với phô mai 2 lớp thêm ngon, thêm béo, là sản phẩm snack không thể bỏ qua đối với",
+        "Fluctuations": "0%"
+    },
+    {
+        "ID": "#010",
+        "Name": " Snack rong biển vị truyền thống Tao Kae Noi Big R",
+        "Price": 8000,
+        "Quantity": 43,
+        "Information": "Những miếng snack rong biển thơm ngon, giòn tan với miếng rong biển thật. Snack rong biển vị truyền thống Tao Kae Noi Big Roll gói 3g thơm ngon, dinh dưỡng, tiện lợi, nhỏ gọn dễ mang theo cho các hoạt",
+        "Fluctuations": "0%"
+    },
+    {
+        "ID": "#011",
+        "Name": "Dầu đậu nành Meizan can 5 lít",
+        "Price": 228000,
+        "Quantity": 120,
+        "Information": "Dầu đậu nành Meizan can 5 lít chiết xuất từ 100% hạt đậu nành được chọn lọc kỹ lưỡng. Dầu đậu nành nguyên chất của nhãn hiệu dầu ăn Meizan không chứa cholesterol, không chất bảo quản, không chất tạo m",
+        "Fluctuations": "0%"
+    },
+    {
+        "ID": "#012",
+        "Name": "Kem đánh răng Colgate MaxFresh hương bạc hà 225g",
+        "Price": 35000,
+        "Quantity": 23,
+        "Information": "Kem đánh răng Colgate là nhãn hiệu kem đánh răng nổi tiếng của Mỹ chuyên về các sản phẩm vệ sinh răng miệng. Kem đánh răng Colgate MaxFresh hương bạc hà 225g mang đến cho bạn cảm giác sảng khoái dài",
+        "Fluctuations": "0%"
+    },
+    {
+        "ID": "#013",
+        "Name": "Nước mắm cá cơm than Knorr 15 độ đạm chai 750ml",
+        "Price": 41000,
+        "Quantity": 60,
+        "Information": "Nước mắm Knorr là dòng sản phẩm nước mắm được làm từ 95% cá cơm than tươi. Nước mắm Knorr ngon tròn vị chai 750ml với vị ngọt nguyên bản của cá cơm, đậm ngọt hài hòa, không bị mặn gắt, cùng hương thơm",
+        "Fluctuations": "0%"
+    },
+    {
+        "ID": "#014",
+        "Name": "Nước lau sàn Rena hương sả và chanh chai 1 lít",
+        "Price": 12500,
         "Quantity": 49,
-        "Information": "hủ tiếu, thịt, rau, nước lèo",
+        "Information": "Sản phẩm nước lau nhà chất lượng của thương hiệu nước lau nhà Rena phù hợp với mọi loại sàn, giúp sàn sạch bóng và mang hương thơm dễ chịu cho căn nhà của bạn. Nước lau sàn nhà Rena hương sả và chanh ",
+        "Fluctuations": "0%"
+    },
+    {
+        "ID": "#015",
+        "Name": "Nước lau kính Lix hương thơm tươi mát chai 650ml",
+        "Price": 17500,
+        "Quantity": 39,
+        "Information": "Nước lau kính Lix là loại nước lau kính được ưa chuộng vì giúp làm sạch nhanh, hạn chế bám bẩn hiệu quả mà lại rất an toàn cho da tay. Nước lau kính Lix hương thơm tươi mát chai 650ml giúp sạch nhanh ",
+        "Fluctuations": "0%"
+    },
+    {
+        "ID": "#016",
+        "Name": "Mì gà A-One gói 85g",
+        "Price": 6200,
+        "Quantity": 230,
+        "Information": "Sợi mì vàng dai ngon hòa quyện trong làn nước súp ngon ngọt, đậm đà với thịt gà thơm lừng hấp dẫn và nhiều dinh dưỡng. Mì gà A-One gói 85g tiện lợi dễ chế biến dễ thưởng thức là lựa chọn hoàn hảo cho ",
+        "Fluctuations": "0%"
+    },
+    {
+        "ID": "#017",
+        "Name": "Kem que dừa non Wall's 63g",
+        "Price": 13000,
+        "Quantity": 40,
+        "Information": "Sản phẩm đến từ thương hiệu kem Wall's quen thuộc. Kem que Wall's dừa non cây 63g với nền kem nước cốt dừa sóng sánh hòa quyện cùng với những miếng vụn dừa non béo béo, đãm bảo bạn sẽ thích ngay từ mi",
+        "Fluctuations": "0%"
+    },
+    {
+        "ID": "#018",
+        "Name": "Chao Bông Mai hũ 170g",
+        "Price": 17000,
+        "Quantity": 32,
+        "Information": "Sản phẩm có hương vị béo thơm đậm đà từ những miếng đậu hũ lên men và cay nồng hấp dẫn từ ớt tươi xay nhuyễn cùng rượu hảo hạng, cho các món luộc, nướng hay nấu trở lên hấp dẫn hơn bao giờ hết, kích t",
+        "Fluctuations": "0%"
+    },
+    {
+        "ID": "#019",
+        "Name": "Bánh bao Thọ Phát 240g",
+        "Price": 19000,
+        "Quantity": 49,
+        "Information": "Bánh bao nhân cadé với hương vị thơm ngon, đậm đà, hấp dẫn, thuận tiện cho việc nấu nướng. Bánh bao Thọ Phát là thương hiệu lâu đời, uy tín với những sản phẩm an toàn, chất lượng và phong phú. Bánh ba",
+        "Fluctuations": "0%"
+    },
+    {
+        "ID": "#020",
+        "Name": "Tương ớt Chinsu chai 250g",
+        "Price": 14900,
+        "Quantity": 79,
+        "Information": "Tương ớt Chinsu là một trong những loại tương ớt quốc dân, được sử dụng rất phổ biến. Tương ớt Chinsu 250g làm từ ớt đỏ chín cây với hương thơm nồng của tỏi cùng sự biến tấu tinh tế của các loại gia v",
         "Fluctuations": "0%"
     }
 ]
