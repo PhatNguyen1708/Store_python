@@ -1,6 +1,6 @@
 from tkinter import *
 from tkinter import ttk
-from tkinter import messagebox
+from tkinter import messagebox, scrolledtext
 from PIL import Image,ImageTk
 from Function import *
 import re
@@ -81,7 +81,7 @@ class admin_store:
         self.admin.e_Price.delete(0, 'end')
         self.admin.e_Id.delete(0, 'end')
         self.admin.e_Quantity.delete(0, 'end')
-        self.admin.e_Infromation.delete(0, 'end')
+        self.admin.e_Infromation.delete('1.0', 'end')
 
     def search(self):
             product_manager = Products()
@@ -106,7 +106,7 @@ class admin_store:
             self.admin.e_Price.delete(0, 'end')
             self.admin.e_Id.delete(0, 'end')
             self.admin.e_Quantity.delete(0, 'end')
-            self.admin.e_Infromation.delete(0, 'end')
+            self.admin.e_Infromation.delete('1.0', 'end')
  
     def is_number(self,s):
         try:
@@ -136,7 +136,7 @@ class admin_store:
         name = self.admin.e_Name.get()
         price =self.admin.e_Price.get()
         quantity=self.admin.e_Quantity.get()
-        information=self.admin.e_Infromation.get()
+        information=self.admin.e_Infromation.get('1.0', END)
         fluctuations = 0
         check_id = self.check_data(id)
         check_price = self.is_number(price)
@@ -158,7 +158,7 @@ class admin_store:
             self.admin.e_Price.delete(0, 'end')
             self.admin.e_Id.delete(0, 'end')
             self.admin.e_Quantity.delete(0, 'end')
-            self.admin.e_Infromation.delete(0, 'end')
+            self.admin.e_Infromation.delete(1.0, 'end')
             return
         elif not check_quantity or not check_price:
             messagebox.showinfo("Fail", "Price and Quantity is a number")
@@ -175,7 +175,7 @@ class admin_store:
             self.admin.e_Price.delete(0, 'end')
             self.admin.e_Id.delete(0, 'end')
             self.admin.e_Quantity.delete(0, 'end')
-            self.admin.e_Infromation.delete(0, 'end')
+            self.admin.e_Infromation.delete(1.0, 'end')
     
     def update(self):
         product_manager = Products()
@@ -183,7 +183,7 @@ class admin_store:
         name = self.admin.e_Name.get()
         price =self.admin.e_Price.get()
         quantity=self.admin.e_Quantity.get()
-        information=self.admin.e_Infromation.get()
+        information=self.admin.e_Infromation.get('1.0', END)
         fluctuations = 0
         check_id = self.check_data(id)
         check_price = self.is_number(price)
@@ -204,7 +204,7 @@ class admin_store:
             self.admin.e_Price.delete(0, 'end')
             self.admin.e_Id.delete(0, 'end')
             self.admin.e_Quantity.delete(0, 'end')
-            self.admin.e_Infromation.delete(0, 'end')
+            self.admin.e_Infromation.delete(1.0, 'end')
             return
         elif not check_quantity or not check_price:
             messagebox.showinfo("Fail", "Price and Quantity is a number")
@@ -221,7 +221,7 @@ class admin_store:
             self.admin.e_Price.delete(0, 'end')
             self.admin.e_Id.delete(0, 'end')
             self.admin.e_Quantity.delete(0, 'end')
-            self.admin.e_Infromation.delete(0, 'end')
+            self.admin.e_Infromation.delete(1.0, 'end')
 
     def show(self):
         def getrow(event):
@@ -232,13 +232,13 @@ class admin_store:
             self.admin.e_Price.delete(0, 'end')
             self.admin.e_Id.delete(0, 'end')
             self.admin.e_Quantity.delete(0, 'end')
-            self.admin.e_Infromation.delete(0, 'end')
+            self.admin.e_Infromation.delete('1.0', 'end')
 
             self.admin.e_Id.insert(0,item_text[0])
             self.admin.e_Name.insert(0,item_text[1])
             self.admin.e_Price.insert(0,item_text[2])
             self.admin.e_Quantity.insert(0,item_text[3])
-            self.admin.e_Infromation.insert(0,item_text[4])
+            self.admin.e_Infromation.insert('1.0',item_text[4])
 
         global tree
 
@@ -280,17 +280,17 @@ class admin_store:
     
     def contruction(self):
         self.admin.title ("Store")
-        self.admin.geometry('650x480+300+150')
+        self.admin.geometry('650x560+300+150')
         self.admin.configure(background=co0)
         self.admin.resizable(width=FALSE, height=FALSE)
 
         self.admin.frame_up = Frame(self.admin, width=650, height=50, bg = co4)
         self.admin.frame_up.grid(row= 0, column=0, padx=0, pady=0)
 
-        self.admin.frame_down = Frame(self.admin, width=650, height=170, bg = co0)
+        self.admin.frame_down = Frame(self.admin, width=650, height=250, bg = co0)
         self.admin.frame_down.grid(row= 1, column=0, padx=0, pady=0)
 
-        self.admin.frame_table = Frame(self.admin, width=650, height=100, bg = co0, relief="flat")
+        self.admin.frame_table = Frame(self.admin, width=650, height=400, bg = co0, relief="flat")
         self.admin.frame_table.grid(row= 2, column=0, columnspan=2, padx=10, pady=1, sticky=NW)
 
         app_name = Label(self.admin.frame_up, text="Store Manager", height=1, font=('Verdana 17 bold'), bg=co4 ,fg=co1)
@@ -301,27 +301,27 @@ class admin_store:
 
         self.admin.l_Id =Label(self.admin.frame_down, text="ID *", width=20, height=1, font=('Ivy 10'), bg=co0, anchor=NW)
         self.admin.l_Id.place(x=10, y=20)
-        self.admin.e_Id = Entry(self.admin.frame_down, width=35, justify='left', highlightthickness=1, relief="solid")
+        self.admin.e_Id = Entry(self.admin.frame_down, width=50, justify='left', highlightthickness=1, relief="solid")
         self.admin.e_Id.place(x=80, y=20)
 
         self.admin.l_Name = Label(self.admin.frame_down, text="Name *",width=20, height=1, font=('Ivy 10'), bg=co0, anchor=NW)
         self.admin.l_Name.place(x=10, y=50)
-        self.admin.e_Name = Entry(self.admin.frame_down, width=35, justify='left', highlightthickness=1, relief="solid")
+        self.admin.e_Name = Entry(self.admin.frame_down, width=50, justify='left', highlightthickness=1, relief="solid")
         self.admin.e_Name.place(x=80, y=50)
 
         self.admin.l_Price = Label(self.admin.frame_down, text="Price *", height=1, font=('Ivy 10'), bg=co0, anchor=NW)
         self.admin.l_Price.place(x=10, y=80)
-        self.admin.e_Price = Entry(self.admin.frame_down, width=35, justify='left', highlightthickness=1, relief="solid")
+        self.admin.e_Price = Entry(self.admin.frame_down, width=50, justify='left', highlightthickness=1, relief="solid")
         self.admin.e_Price.place(x=80, y=80)
 
         self.admin.l_Quantity = Label(self.admin.frame_down, text="Quantity *", width=20, height=1, font=('Ivy 10'), bg=co0, anchor=NW)
         self.admin.l_Quantity.place(x=10, y=110)
-        self.admin.e_Quantity = Entry(self.admin.frame_down, width=35, justify='left', highlightthickness=1, relief="solid")
+        self.admin.e_Quantity = Entry(self.admin.frame_down, width=50, justify='left', highlightthickness=1, relief="solid")
         self.admin.e_Quantity.place(x=80, y=110)
 
         self.admin.l_Infromation = Label(self.admin.frame_down, text="Infromation *", width=20, height=1, font=('Ivy 10'), bg=co0, anchor=NW)
         self.admin.l_Infromation.place(x=10, y=140)
-        self.admin.e_Infromation = Entry(self.admin.frame_down, width=35, justify='left', highlightthickness=1, relief="solid")
+        self.admin.e_Infromation = scrolledtext.ScrolledText(self.admin.frame_down, width=35, height=5, wrap=WORD)
         self.admin.e_Infromation.place(x=80, y=140)
 
         self.admin.b_search = Button(self.admin.frame_down, text="Search", height=1, bg=co4, font=('Ivy 8 bold'),command=self.search)
