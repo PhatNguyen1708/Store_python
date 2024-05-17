@@ -2,18 +2,18 @@
     {
         "ID": "#001",
         "Name": "Nước ngọt Pepsi không calo vị chanh 320ml",
-        "Price": "47000",
-        "Quantity": "178",
+        "Price": 47000,
+        "Quantity": 178,
         "Information": "Sản phẩm là kết hợp hài hòa của vị chanh thanh mát, giải nhiệt và mang lại cảm giác sảng khoái. Nước ngọt Pepsi không calo vị chanh lon 320ml cực kỳ thích hợp cho những người thích uống nước ngọt nhưn",
         "Fluctuations": "0%"
     },
     {
         "ID": "#002",
         "Name": "Mì kim chi Ottogi gói 120g",
-        "Price": "10400",
-        "Quantity": "19",
-        "Information": "Ngon mê ly với nước súp mì Ottogi vị kim chi đậm đà, hấp dẫn thấm đều trong từng sợi mì dai vàng cùng hương thơm lừng quyến rũ kích thích khứu giác lẫn vị giác. Mì Ottogi kim chi gói 120g mang đến bữa\n\n\n",
-        "Fluctuations": "-90.00%"
+        "Price": 10400,
+        "Quantity": 19,
+        "Information": "Ngon mê ly với nước súp mì Ottogi vị kim chi đậm đà, hấp dẫn thấm đều trong từng sợi mì dai vàng cùng hương thơm lừng quyến rũ kích thích khứu giác lẫn vị giác. Mì Ottogi kim chi gói 120g mang đến bữa",
+        "Fluctuations": "0%"
     },
     {
         "ID": "#003",

@@ -149,7 +149,7 @@ class admin_store:
         elif not re.search(r'^#+[0-9]',id):
             id = "#"+id
             if self.check_data(id) == 1:
-                messagebox.showinfo("Fail","Duplicate ID already exists")
+                messagebox.showinfo("Successful","Data update successfully !")
                 product_manager.update_product(add)
             else:
                 product_manager.add_product(add)
@@ -164,8 +164,14 @@ class admin_store:
             messagebox.showinfo("Fail", "Price and Quantity is a number")
             return
         elif check_id == 1:
-            product_manager.update_product(add)           
-            messagebox.showinfo("Fail","Duplicate ID already exists")
+            product_manager.update_product(add)
+            messagebox.showinfo("Successful","Data update successfully !")
+            self.show()
+            self.admin.e_Name.delete(0, 'end')
+            self.admin.e_Price.delete(0, 'end')
+            self.admin.e_Id.delete(0, 'end')
+            self.admin.e_Quantity.delete(0, 'end')
+            self.admin.e_Infromation.delete(1.0, 'end')
             return
         else:
             product_manager.add_product(add)

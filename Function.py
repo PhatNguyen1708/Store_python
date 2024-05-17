@@ -19,7 +19,7 @@ class Products:
         try:
             with open('data/store_data.json','r',encoding='utf-8') as file:
                 self.products = json.load(file)
-        except FileNotFoundError:
+        except Exception:
             self.products =[]
         return self.products
 

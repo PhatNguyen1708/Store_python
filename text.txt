@@ -1,1 +1,1 @@
-  "https://v1.slashapi.com/hehehehe/mysql/njU5fzbTtN/store"
+  "https://v1.slashapi.com/hehehehe/mysql/njU5fzbTtN/store?per_page=20&page=1"
