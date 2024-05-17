@@ -37,7 +37,7 @@ class user_store:
             self.shopping_cart.resizable(width=tk.FALSE, height=tk.FALSE)
             self.frame_table_shopping_cart = tk.Frame(self.shopping_cart, width=500, height=170, bg = co2)
             self.frame_table_shopping_cart.grid(row= 0, column=0, padx=10, pady=20)
-            self.frame_funtion = tk.Frame(self.shopping_cart, width=590, height=120, bg = co2)
+            self.frame_funtion = tk.Frame(self.shopping_cart, width=590, height=120, bg = co0)
             self.frame_funtion.place(x=0,y=350)
             
         def show_cart():
@@ -335,7 +335,7 @@ class user_store:
         self.user.b_view = tk.Button(self.user.frame_function, text="View", width=10, height=1, bg=co4, font=('Ivy 8 bold'),command=self.show)
         self.user.b_view.place(x=10, y=70)
 
-        self.user.b_clean = tk.Button(self.user.frame_product, text="Clean all",width=8, height=1, bg=co4, font=('Ivy 8 bold'),command=self.clean)
+        self.user.b_clean = tk.Button(self.user.frame_product, text="Clean",width=8, height=1, bg=co4, font=('Ivy 8 bold'),command=self.clean)
         self.user.b_clean.place(x=10, y=210)
 
         self.user.b_add= tk.Button(self.user.frame_product, text="Add to cart",width=8, height=1, bg=co4, font=('Ivy 8 bold'),command=self.add_cart)
