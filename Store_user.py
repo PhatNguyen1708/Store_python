@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
-from tkinter import messagebox
+from tkinter import messagebox, scrolledtext
 from PIL import Image,ImageTk
 from Function import *
 import re
@@ -317,7 +317,7 @@ class user_store:
 
         self.user.l_Infromation = tk.Label(self.user.frame_product, text="Infromation ", width=20, height=1, font=('Ivy 10'), bg=co0, anchor=tk.NW)
         self.user.l_Infromation.place(x=10, y=150)
-        self.user.e_Infromation = tk.Text(self.user.frame_product, width=25,height=3,highlightbackground=co1,highlightthickness=1)
+        self.user.e_Infromation = scrolledtext.ScrolledText(self.user.frame_product, width=24, height=4, wrap=tk.WORD,highlightthickness=1, relief="solid")
         self.user.e_Infromation.place(x=80, y=150)
         self.user.e_Infromation.configure(state="disabled")
 
@@ -336,10 +336,10 @@ class user_store:
         self.user.b_view.place(x=10, y=70)
 
         self.user.b_clean = tk.Button(self.user.frame_product, text="Clean",width=8, height=1, bg=co4, font=('Ivy 8 bold'),command=self.clean)
-        self.user.b_clean.place(x=10, y=210)
+        self.user.b_clean.place(x=10, y=225)
 
         self.user.b_add= tk.Button(self.user.frame_product, text="Add to cart",width=8, height=1, bg=co4, font=('Ivy 8 bold'),command=self.add_cart)
-        self.user.b_add.place(x=80, y=210)
+        self.user.b_add.place(x=80, y=225)
 
         self.user.b_cart = tk.Button(self.user.frame_product, text="Cart",width=8, height=1, bg=co4, font=('Ivy 8 bold'),command=self.show_shopping_cart)
         self.user.b_cart.place(x=210, y=250)

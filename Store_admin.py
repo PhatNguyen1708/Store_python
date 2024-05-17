@@ -327,7 +327,7 @@ class admin_store:
 
         self.admin.l_Infromation = Label(self.admin.frame_down, text="Infromation *", width=20, height=1, font=('Ivy 10'), bg=co0, anchor=NW)
         self.admin.l_Infromation.place(x=10, y=140)
-        self.admin.e_Infromation = scrolledtext.ScrolledText(self.admin.frame_down, width=35, height=5, wrap=WORD)
+        self.admin.e_Infromation = scrolledtext.ScrolledText(self.admin.frame_down, width=35, height=5, wrap=WORD,highlightthickness=1, relief="solid")
         self.admin.e_Infromation.place(x=80, y=140)
 
         self.admin.b_search = Button(self.admin.frame_down, text="Search", height=1, bg=co4, font=('Ivy 8 bold'),command=self.search)
